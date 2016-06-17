@@ -1,0 +1,3 @@
+#mypage.view:
+  #title: 'Add content'
+  #route_name: node.add_page

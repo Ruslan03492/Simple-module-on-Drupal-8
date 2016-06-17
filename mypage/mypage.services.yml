@@ -1,0 +1,11 @@
+services:
+  mypage.db_logic:
+    class: Drupal\mypage\MyPageDbLogic
+    arguments: ['@database']
+    tags:
+      - { name: backend_overridable }
+  access_check.mypage.add:
+    class: Drupal\node\Access\NodeAddAccessCheck
+    arguments: ['@entity.manager']
+    tags:
+      - { name: access_check, applies_to: _node_add_access }

@@ -1,0 +1,6 @@
+{
+  "name": "drupal/mypage",
+  "description": "Create page in drupal 8",
+  "type": "drupal-module",
+  "license": "GPL-2.0+"
+}

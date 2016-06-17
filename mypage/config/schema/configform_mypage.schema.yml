@@ -1,0 +1,7 @@
+configform_mypage.settings:
+  type: config_object
+  label: 'Configform Example settings'
+  mapping:
+    email_address:
+      type: string
+      label: 'This is the example email address.'

@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the mypage module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function mypage_schema() {
+  $schema['mypage'] = array(
+    'description' => 'Custom mypage table.',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'description' => 'Title page',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'body' => array(
+        'description' => 'Body page',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big',
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
