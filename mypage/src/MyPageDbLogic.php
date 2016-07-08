@@ -26,6 +26,7 @@ class MyPageDbLogic {
    * @param \Drupal\Core\Database\Connection $database
    *   The database connection.
    */
+  // Переменная $database придетела к нам из аргумента сервиса.
   public function __construct(Connection $database) {
     $this->database = $database;
   }
@@ -37,6 +38,7 @@ class MyPageDbLogic {
     if (empty($title) || empty($body)) {
       return FALSE;
     }
+    // Пример работы с БД в Drupal 8.
     $query = $this->database->insert('mypage');
     $query->fields(array(
       'title' => $title,
@@ -49,10 +51,23 @@ class MyPageDbLogic {
    * Get all records from table mypage.
    */
   public function getAll() {
+    return $this->getById();
+  }
+
+  /**
+   * Get records by id from table mypage.
+   */
+  public function getById($id = NULL, $reset = FALSE) {
     $query = $this->database->select('mypage');
     $query->fields('mypage', array('id', 'title', 'body'));
+    if ($id) {
+      $query->condition('id', $id);
+    }
     $result = $query->execute()->fetchAll();
     if (count($result)) {
+      if ($reset) {
+        $result = reset($result);
+      }
       return $result;
     }
     return FALSE;

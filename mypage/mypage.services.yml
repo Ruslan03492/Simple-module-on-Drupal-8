@@ -1,11 +1,10 @@
 services:
-  mypage.db_logic:
+  mypage.db_logic: # Название сервиса.
+#     Класс который возвращает сервис.
+#     Так как в Drupal 8 используется автозагрузчик PSR-4 то src пропускаем.
     class: Drupal\mypage\MyPageDbLogic
+    # Аргументы которые прилетят в конструктор класса.
     arguments: ['@database']
+    # Это своего рода вес, тоесть когда будет вызваться сервис.
     tags:
       - { name: backend_overridable }
-  access_check.mypage.add:
-    class: Drupal\node\Access\NodeAddAccessCheck
-    arguments: ['@entity.manager']
-    tags:
-      - { name: access_check, applies_to: _node_add_access }

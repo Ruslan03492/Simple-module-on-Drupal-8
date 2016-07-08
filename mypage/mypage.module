@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function mypage_theme() {
+  return array(
+    'mypage_theme' => array( // Название темы
+      'variables' => array( // Массив названия перменных
+        'data' => array(),
+      ),
+      'templates' => 'templates/mypage-theme', // Путь к шаблону без .html.twig в котором и будут доступны перменные что указаны выше
+    ),
+  );
+}
